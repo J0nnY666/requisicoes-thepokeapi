@@ -129,4 +129,38 @@ hr {
     padding: 20px;
     max-width: 450px;
     min-height: 300px;
+    text-transform: capitalize;
+}
+
+#showGames{
+    cursor: pointer;
+    color: #2f67b2;
+}
+
+.games{
+    margin: 10px;
+    margin-top: 20vh;
+    max-width: 450px;
+    min-height: 300px;
+    padding: 40px;
+    display: none;
+    gap: 30px;
+    background-color: #FFF;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-transform: capitalize;
+    vertical-align: middle;
+}
+
+.game-information{
+    color: red;
+}
+
+.poke-name{
+    font-weight: bold;
+    color: red;
+}
+
+#type{
+    text-transform: capitalize;
 }

@@ -17,7 +17,53 @@ formulario.addEventListener("submit", function (pesquisar) {
     .then(function (data) {
       document.getElementById("id").innerHTML = `ID: ${data.id}`;
       document.getElementById("nameResult").innerHTML = `Nome: ${maiuscula(data.name)}`
+      
+      let type = data.types[0].type.name
+       console.log(type)
       document.getElementById("type").innerHTML = `Tipo: ${maiuscula(data.types.map(typeinfo => typeinfo.type.name).join(' / '))}`
+      
+      let tipo = document.getElementById('type');
+      if(type == 'electric'){
+        tipo.style.color = 'yellow'
+      } else if(type == 'fire'){
+        tipo.style.color = 'red'
+      } else if(type == 'grass'){
+        tipo.style.color = '#26CA4F'
+      } else if(type == 'water'){
+        tipo.style.color = 'blue'
+      } else if(type == 'bug'){
+        tipo.style.color = '#3B994F'
+      } else if(type == 'dark'){
+        tipo.style.color = '#4B0082	'
+      } else if(type == 'ghost'){
+        tipo.style.color = '#800080'
+      } else if (type == 'normal'){
+        tipo.style.color = 'white'
+      } else if(type == 'dragon'){
+        tipo.style.color = '#4169E1'
+      } else if (type == 'fairy'){
+        tipo.style.color = '#FF1493'
+      } else if (type == 'fighting'){
+        tipo.style.color = '#A52A2A'
+      } else if (type == 'flying'){
+        tipo.style.color = '#6495ED'
+      } else if(type == 'ground'){
+        tipo.style.color = '#8B4513' 
+      } else if(type == 'ice'){
+        tipo.style.color = '#E0FFFF'
+      } else if (type == 'psychic'){
+        tipo.style.color = '#F61D90'
+      } else if (type == 'rock'){
+        tipo.style.color = '#800000'
+      } else if (type == 'steel'){
+        tipo.style.color = '#B0C4DE'
+      } else if (type == 'poison'){
+        tipo.style.color = '#FF1493'
+      } 
+      else {
+        tipo.style = 'black'
+      }
+
 
       let PesoKg = data.weight / 10;
       document.getElementById("weight").innerHTML = `Peso: ${PesoKg}kg`
@@ -61,6 +107,11 @@ formulario.addEventListener("submit", function (pesquisar) {
 
       document.getElementById("habilidades").innerHTML = maiuscula(data.moves.map(typeinfo => typeinfo.move.name).join(' | '));
       abrir.innerHTML = `Mostrar Habilidades`
+
+      const gamesEl = document.getElementById("games")
+      gamesEl.innerHTML = `<p class="game-information"> <span class = "poke-name">${maiuscula(data.name)}</span> já apareceu nos seguintes games: </p>` + (data.game_indices.map(typeinfo => typeinfo.version.name).join(' | '));
+      showGames.innerHTML = 'Mostrar Aparições'
+
     }).catch(function (err){
       console.log(err)
       if(err == `SyntaxError: Unexpected token 'N', "Not Found" is not valid JSON`){
@@ -87,4 +138,19 @@ abrir.addEventListener('click', function(){
  habilidades.style.display = 'block'
  abrir.innerHTML = `Esconder Habilidades`
 }
+})
+
+let showGames = document.getElementById("showGames");
+let games = document.getElementById("games")
+
+showGames.addEventListener('click', () => {
+
+  if(games.style.display === 'block'){
+    games.style.display = 'none';
+    showGames.innerHTML = 'Mostrar Aparições'
+  } else {
+    games.style.display = 'block';
+    showGames.innerHTML = 'Esconder Aparições'
+  }
+
 })
