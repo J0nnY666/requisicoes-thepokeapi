@@ -19,7 +19,6 @@ formulario.addEventListener("submit", function (pesquisar) {
       document.getElementById("nameResult").innerHTML = `Nome: ${maiuscula(data.name)}`
       
       let type = data.types[0].type.name
-       console.log(type)
       document.getElementById("type").innerHTML = `Tipo: ${maiuscula(data.types.map(typeinfo => typeinfo.type.name).join(' / '))}`
       
       let tipo = document.getElementById('type');
@@ -105,12 +104,15 @@ formulario.addEventListener("submit", function (pesquisar) {
         }
       }
 
-      document.getElementById("habilidades").innerHTML = maiuscula(data.moves.map(typeinfo => typeinfo.move.name).join(' | '));
-      abrir.innerHTML = `Mostrar Habilidades`
+      document.getElementById("habilidades").innerHTML = maiuscula(data.moves.map(typeinfo => typeinfo.move.name).join(' | ') );
+      abrir.innerHTML = `Habilidades`
 
       const gamesEl = document.getElementById("games")
       gamesEl.innerHTML = `<p class="game-information"> <span class = "poke-name">${maiuscula(data.name)}</span> já apareceu nos seguintes games: </p>` + (data.game_indices.map(typeinfo => typeinfo.version.name).join(' | '));
-      showGames.innerHTML = 'Mostrar Aparições'
+      showGames.innerHTML = 'Aparições'
+
+      let esconder = document.getElementById("esconder")
+      
 
     }).catch(function (err){
       console.log(err)
@@ -133,24 +135,39 @@ abrir.addEventListener('click', function(){
   
  if(habilidades.style.display === 'block'){
  habilidades.style.display = 'none';
- abrir.innerHTML = `Mostrar Habilidades`
 } else {
  habilidades.style.display = 'block'
- abrir.innerHTML = `Esconder Habilidades`
 }
 })
 
+habilidades.addEventListener('dblclick', () =>{
+  if(habilidades.style.display === 'block'){
+    habilidades.style.display = 'none';
+   } else {
+    habilidades.style.display = 'block'
+   }
+})
+
+
 let showGames = document.getElementById("showGames");
 let games = document.getElementById("games")
+let esconder = document.getElementById("esconder")
 
 showGames.addEventListener('click', () => {
 
   if(games.style.display === 'block'){
     games.style.display = 'none';
-    showGames.innerHTML = 'Mostrar Aparições'
   } else {
     games.style.display = 'block';
-    showGames.innerHTML = 'Esconder Aparições'
   }
 
 })
+
+games.addEventListener("dblclick", () => {
+  if(games.style.display === 'block'){
+    games.style.display = 'none';
+  } else {
+    games.style.display = 'block';
+  }
+})
+

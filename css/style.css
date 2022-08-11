@@ -120,7 +120,6 @@ hr {
 
 .habilidades{
     margin: 10px;
-    margin-top: 20vh;
     padding: 10px;
     display: none;
     background-color: #FFF;
@@ -139,17 +138,15 @@ hr {
 
 .games{
     margin: 10px;
-    margin-top: 20vh;
-    max-width: 450px;
-    min-height: 300px;
-    padding: 40px;
+    padding: 10px;
     display: none;
-    gap: 30px;
     background-color: #FFF;
     border: 2px solid #ccc;
     border-radius: 10px;
+    padding: 20px;
+    max-width: 450px;
+    min-height: 300px;
     text-transform: capitalize;
-    vertical-align: middle;
 }
 
 .game-information{
