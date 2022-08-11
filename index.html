@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="js/script.js" defer></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <link rel="shortcut icon" href="/favicons/pokemon-go.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Trabalhando com <span>HTML</span>, <span>CSS</span> e usando o <span>JavaScript</span> para fazer consultas
+            na <a href="https://pokeapi.co/">PokéAPI</a></h1>
+        <hr>
+        <div class="image">
+            <img src="./img/pokemon-logo.png" alt="pokemon-logo">
+        </div>
+        <form class="group-form" autocomplete="off">
+            <label>Nome ou número do Pokémon</label>
+            <input type="search" id="name" placeholder="Exemplo: Pikachu ou 25" required>
+            <input type="submit" value="BUSCAR">
+        </form>
+        <div id="imgPokemon" class="frente-costas">
+        </div>
+        <span class="raridade" id="raridade"></span>
+        <div id="content" class="content">
+            <h1 id="id"><img src="img/pikachu.png"></h1>
+            <h1 id="nameResult"></h1>
+            <h1 id="type"></h1>
+            <h1 id="weight"></h1>
+            <h1 id="height"></h1>
+            <h1 id="abilities"></h1>
+        </div>
+
+
+    </div>
+
+    <div class="habilidades" id="habilidades"></div>
+
+</body>
+
+</html>
