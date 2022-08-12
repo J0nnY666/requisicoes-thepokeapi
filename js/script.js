@@ -19,6 +19,7 @@ formulario.addEventListener("submit", function (pesquisar) {
     .then(function (data) {
       resultEl.style.display = 'block'
       erroEl.style.display = 'none'
+      
       document.getElementById("id").innerHTML = `ID: ${data.id}`;
       document.getElementById("nameResult").innerHTML = `Nome: ${maiuscula(data.name)}`
 
@@ -26,48 +27,28 @@ formulario.addEventListener("submit", function (pesquisar) {
       document.getElementById("type").innerHTML = `Tipo: ${maiuscula(data.types.map(typeinfo => typeinfo.type.name).join(' / '))}`
 
       let tipo = document.getElementById('type');
-      if (type == 'electric') {
-        tipo.style.color = 'yellow'
-      } else if (type == 'fire') {
-        tipo.style.color = 'red'
-      } else if (type == 'grass') {
-        tipo.style.color = '#26CA4F'
-      } else if (type == 'water') {
-        tipo.style.color = 'blue'
-      } else if (type == 'bug') {
-        tipo.style.color = '#3B994F'
-      } else if (type == 'dark') {
-        tipo.style.color = '#4B0082	'
-      } else if (type == 'ghost') {
-        tipo.style.color = '#800080'
-      } else if (type == 'normal') {
-        tipo.style.color = 'white'
-      } else if (type == 'dragon') {
-        tipo.style.color = '#4169E1'
-      } else if (type == 'fairy') {
-        tipo.style.color = '#FF1493'
-      } else if (type == 'fighting') {
-        tipo.style.color = '#A52A2A'
-      } else if (type == 'flying') {
-        tipo.style.color = '#6495ED'
-      } else if (type == 'ground') {
-        tipo.style.color = '#8B4513'
-      } else if (type == 'ice') {
-        tipo.style.color = '#E0FFFF'
-      } else if (type == 'psychic') {
-        tipo.style.color = '#F61D90'
-      } else if (type == 'rock') {
-        tipo.style.color = '#800000'
-      } else if (type == 'steel') {
-        tipo.style.color = '#B0C4DE'
-      } else if (type == 'poison') {
-        tipo.style.color = '#FF1493'
+      switch (type){
+        case "electric": tipo.style.color = 'yellow';  break
+        case "fire": tipo.style.color = 'red';  break
+        case "grass": tipo.style.color = '#26CA4F';  break
+        case "water": tipo.style.color = 'blue';  break
+        case "bug": tipo.style.color = '#3B994F' ;  break
+        case "dark": tipo.style.color = '#4B0082' ; break
+        case "ghost": tipo.style.color = '#800080'; break
+        case "normal": tipo.style.color = 'white'; break
+        case "dragon": tipo.style.color = '#4169E1'; break
+        case "fairy": tipo.style.color = '#FF1493'; break
+        case "fighting": tipo.style.color = '#A52A2A'; break
+        case "flying": tipo.style.color = '#6495ED'; break
+        case "ground": tipo.style.color = '#8B4513'; break
+        case "ice": tipo.style.color = '#E0FFFF'; break
+        case "psychic": tipo.style.color = '#F61D90'; break
+        case "rock": tipo.style.color = '#800000'; break
+        case "steel'": tipo.style.color = '#B0C4DE'; break
+        case "poison": tipo.style.color = '#FF1493'; break
+        default: tipo.style.color = 'black'
       }
-      else {
-        tipo.style = 'black'
-      }
-
-
+    
       let PesoKg = data.weight / 10;
       document.getElementById("weight").innerHTML = `Peso: ${PesoKg}kg`
 
