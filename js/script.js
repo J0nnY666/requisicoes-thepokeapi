@@ -5,7 +5,6 @@ formulario.addEventListener("submit", function (pesquisar) {
 
 
   let urlForm = " https://pokeapi.co/api/v2/pokemon/";
-
   urlForm += this.name.value;
   urlForm = urlForm.toLocaleLowerCase();
 
@@ -19,6 +18,7 @@ formulario.addEventListener("submit", function (pesquisar) {
     .then(function (data) {
       resultEl.style.display = 'block'
       erroEl.style.display = 'none'
+      raridade.style.cssText = 'font-weight: normal;'
       
       document.getElementById("id").innerHTML = `ID: ${data.id}`;
       document.getElementById("nameResult").innerHTML = `Nome: ${maiuscula(data.name)}`
