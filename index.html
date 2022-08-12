@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
 
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="js/script.js" defer></script>
 
+    <!-- Custom Alert-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="js/script.js" defer></script>
     <link rel="shortcut icon" href="/favicons/pokemon-go.png" type="image/x-icon">
-
 </head>
 
 <body>
@@ -21,14 +21,22 @@
         <h1>Trabalhando com <span>HTML</span>, <span>CSS</span> e usando o <span>JavaScript</span> para fazer consultas
             na <a href="https://pokeapi.co/" target="_blank">PokéAPI</a></h1>
         <hr>
+        
         <div class="image">
-            <img src="./img/pokemon-logo.png" alt="pokemon-logo">
+            <a href="https://www.pokemon.com/br/" target="_blank"><img src="./img/pokemon-logo.png"
+                    alt="pokemon-logo"></a>
         </div>
         <form class="group-form" autocomplete="off">
             <label>Nome ou número do Pokémon</label>
             <input type="search" id="name" placeholder="Exemplo: Pikachu ou 25" required>
             <input type="submit" value="BUSCAR">
         </form>
+
+        <div class="erro" id="erro"></div>
+
+        <div  class="result" id="result" >
+
+    
         <div id="imgPokemon" class="frente-costas">
         </div>
         <span class="raridade" id="raridade"></span>
@@ -41,13 +49,15 @@
             <h1 id="showGames"></h1>
             <h1 id="abilities"></h1>
         </div>
-        <div class="habilidades" id="habilidades">
-        </div>
-        <div class="games" id="games">
-           
-        </div>
+        <div class="habilidades" id="habilidades"></div>
+        <div class="games" id="games"></div>
 
     </div>
+
+
+</div>
+
+
 </body>
 
 </html>

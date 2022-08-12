@@ -7,7 +7,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #6ab7f5, #fff);
+    background: linear-gradient(#6ab7f5, #fff);
     min-height: 100vh;
     display: flex;
     flex-direction: row;
@@ -176,3 +176,14 @@ hr {
     text-transform: capitalize;
 }
 
+.erro{
+    background-color: #eb6b75;
+    display: none;
+    color: #131111;
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+    width: auto;
+    padding: 10px;
+    margin: 0 auto;
+}

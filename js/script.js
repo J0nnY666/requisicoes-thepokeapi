@@ -11,11 +11,14 @@ formulario.addEventListener("submit", function (pesquisar) {
 
   let imagem = document.getElementById("imgPokemon");
   let raridade = document.getElementById("raridade");
-  let container = document.getElementById("container");
+  let resultEl = document.getElementById('result')
+  let erroEl = document.getElementById('erro')
 
   fetch(urlForm)
     .then((Response) => Response.json())
     .then(function (data) {
+      resultEl.style.display = 'block'
+      erroEl.style.display = 'none'
       document.getElementById("id").innerHTML = `ID: ${data.id}`;
       document.getElementById("nameResult").innerHTML = `Nome: ${maiuscula(data.name)}`
 
@@ -127,11 +130,14 @@ formulario.addEventListener("submit", function (pesquisar) {
 
 
     }).catch(function (err) {
+     
       console.log(err)
       if (err == `SyntaxError: Unexpected token 'N', "Not Found" is not valid JSON`) {
-        swal('Pokémon não encontrado 😥')
+        resultEl.style.display = 'none'
+        erroEl.style.display = 'block'
+        erroEl.innerHTML = ' Pokémon não encontrado'
       } else {
-        swal(err)
+        erroEl.innerHTML = err;
       }
     })
 });
