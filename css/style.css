@@ -145,7 +145,7 @@ hr {
     border-radius: 10px;
     padding: 20px;
     max-width: 450px;
-    min-height: 300px;
+    min-height: 200px;
     text-transform: capitalize;
 }
 
@@ -158,6 +158,19 @@ hr {
     color: red;
 }
 
+.fechar{
+    color:rgb(255, 0, 0);
+    cursor: pointer;
+    margin-left: 22vh;
+    padding-top: 10px;
+    width: min-content
+}
+
+.fechar:hover{
+    font-weight: bold;
+}
+
 #type{
     text-transform: capitalize;
 }
+

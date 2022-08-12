@@ -11,54 +11,55 @@ formulario.addEventListener("submit", function (pesquisar) {
 
   let imagem = document.getElementById("imgPokemon");
   let raridade = document.getElementById("raridade");
+  let container = document.getElementById("container");
 
   fetch(urlForm)
     .then((Response) => Response.json())
     .then(function (data) {
       document.getElementById("id").innerHTML = `ID: ${data.id}`;
       document.getElementById("nameResult").innerHTML = `Nome: ${maiuscula(data.name)}`
-      
+
       let type = data.types[0].type.name
       document.getElementById("type").innerHTML = `Tipo: ${maiuscula(data.types.map(typeinfo => typeinfo.type.name).join(' / '))}`
-      
+
       let tipo = document.getElementById('type');
-      if(type == 'electric'){
+      if (type == 'electric') {
         tipo.style.color = 'yellow'
-      } else if(type == 'fire'){
+      } else if (type == 'fire') {
         tipo.style.color = 'red'
-      } else if(type == 'grass'){
+      } else if (type == 'grass') {
         tipo.style.color = '#26CA4F'
-      } else if(type == 'water'){
+      } else if (type == 'water') {
         tipo.style.color = 'blue'
-      } else if(type == 'bug'){
+      } else if (type == 'bug') {
         tipo.style.color = '#3B994F'
-      } else if(type == 'dark'){
+      } else if (type == 'dark') {
         tipo.style.color = '#4B0082	'
-      } else if(type == 'ghost'){
+      } else if (type == 'ghost') {
         tipo.style.color = '#800080'
-      } else if (type == 'normal'){
+      } else if (type == 'normal') {
         tipo.style.color = 'white'
-      } else if(type == 'dragon'){
+      } else if (type == 'dragon') {
         tipo.style.color = '#4169E1'
-      } else if (type == 'fairy'){
+      } else if (type == 'fairy') {
         tipo.style.color = '#FF1493'
-      } else if (type == 'fighting'){
+      } else if (type == 'fighting') {
         tipo.style.color = '#A52A2A'
-      } else if (type == 'flying'){
+      } else if (type == 'flying') {
         tipo.style.color = '#6495ED'
-      } else if(type == 'ground'){
-        tipo.style.color = '#8B4513' 
-      } else if(type == 'ice'){
+      } else if (type == 'ground') {
+        tipo.style.color = '#8B4513'
+      } else if (type == 'ice') {
         tipo.style.color = '#E0FFFF'
-      } else if (type == 'psychic'){
+      } else if (type == 'psychic') {
         tipo.style.color = '#F61D90'
-      } else if (type == 'rock'){
+      } else if (type == 'rock') {
         tipo.style.color = '#800000'
-      } else if (type == 'steel'){
+      } else if (type == 'steel') {
         tipo.style.color = '#B0C4DE'
-      } else if (type == 'poison'){
+      } else if (type == 'poison') {
         tipo.style.color = '#FF1493'
-      } 
+      }
       else {
         tipo.style = 'black'
       }
@@ -104,21 +105,32 @@ formulario.addEventListener("submit", function (pesquisar) {
         }
       }
 
-      document.getElementById("habilidades").innerHTML = maiuscula(data.moves.map(typeinfo => typeinfo.move.name).join(' | ') );
+      document.getElementById("habilidades").innerHTML = maiuscula(data.moves.map(typeinfo => typeinfo.move.name).join(' | ') + '<p id="fecharHabilidades" class = "fechar" >fechar</p>');
       abrir.innerHTML = `Habilidades`
 
+      let fecharHabilidades = document.querySelector('#fecharHabilidades')
+      fecharHabilidades.addEventListener("click", () => {
+        habilidades.style.display = 'none';
+      })
+
       const gamesEl = document.getElementById("games")
-      gamesEl.innerHTML = `<p class="game-information"> <span class = "poke-name">${maiuscula(data.name)}</span> já apareceu nos seguintes games: </p>` + (data.game_indices.map(typeinfo => typeinfo.version.name).join(' | '));
+      gamesEl.innerHTML = `<p class="game-information"> <span class = "poke-name">${maiuscula(data.name)}</span> já apareceu nos seguintes games: </p>` + (data.game_indices.map(typeinfo => typeinfo.version.name).join(' | ') + '<p id="fecharGames" class = "fechar" >Fechar</p>');
       showGames.innerHTML = 'Aparições'
 
-      let esconder = document.getElementById("esconder")
-      
 
-    }).catch(function (err){
+      let fecharGames = document.querySelector('#fecharGames')
+      fecharGames.addEventListener("click", () => {
+        games.style.display = 'none';
+      })
+
+
+
+
+    }).catch(function (err) {
       console.log(err)
-      if(err == `SyntaxError: Unexpected token 'N', "Not Found" is not valid JSON`){
+      if (err == `SyntaxError: Unexpected token 'N', "Not Found" is not valid JSON`) {
         swal('Pokémon não encontrado 😥')
-      } else{
+      } else {
         swal(err)
       }
     })
@@ -131,23 +143,14 @@ function maiuscula(string) {
 let abrir = document.getElementById("abilities");
 let habilidades = document.getElementById("habilidades");
 
-abrir.addEventListener('click', function(){
-  
- if(habilidades.style.display === 'block'){
- habilidades.style.display = 'none';
-} else {
- habilidades.style.display = 'block'
-}
-})
+abrir.addEventListener('click', function () {
 
-habilidades.addEventListener('dblclick', () =>{
-  if(habilidades.style.display === 'block'){
+  if (habilidades.style.display === 'block') {
     habilidades.style.display = 'none';
-   } else {
+  } else {
     habilidades.style.display = 'block'
-   }
+  }
 })
-
 
 let showGames = document.getElementById("showGames");
 let games = document.getElementById("games")
@@ -155,7 +158,7 @@ let esconder = document.getElementById("esconder")
 
 showGames.addEventListener('click', () => {
 
-  if(games.style.display === 'block'){
+  if (games.style.display === 'block') {
     games.style.display = 'none';
   } else {
     games.style.display = 'block';
@@ -163,11 +166,6 @@ showGames.addEventListener('click', () => {
 
 })
 
-games.addEventListener("dblclick", () => {
-  if(games.style.display === 'block'){
-    games.style.display = 'none';
-  } else {
-    games.style.display = 'block';
-  }
-})
+
+
 
