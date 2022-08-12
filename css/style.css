@@ -159,10 +159,12 @@ hr {
 }
 
 .fechar{
+    margin: 0 auto;
     color:rgb(255, 0, 0);
     cursor: pointer;
-    margin-left: 22vh;
     padding-top: 10px;
+    display: flex;
+    flex-direction: column;
     width: min-content
 }
 
